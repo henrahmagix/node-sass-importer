@@ -1,0 +1,21 @@
+{
+  "name": "node-sass-importer",
+  "version": "0.0.0",
+  "description": "Creates an importer function for node-sass with no-hassle exception handling",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "node-sass",
+    "sass",
+    "importer",
+    "error",
+    "handling"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "node-sass": ">=2.0.0"
+  }
+}
