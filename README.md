@@ -9,6 +9,42 @@ From https://github.com/sass/node-sass/issues/1048#issuecomment-130451079:
 
 When that issue is fixed, this library will no longer be needed.
 
+## Simpler importer functions
+
+This helpfully allows you to always write sync or async importers regardless of the render method; you would otherwise have to change `return` to `done()` when changing `renderSync` to `render`.
+
+### Example
+
+```js
+function mySyncImporter() {
+    throw new Error('something bad happened');
+}
+```
+
+```js
+sass.renderSync({
+    importer: mySyncImporter
+});
+```
+:+1: process exits with error message
+
+But if we change it to async:
+```js
+sass.render({
+    importer: mySyncImporter
+});
+```
+:-1: error is shown but process hangs because done() is never called
+
+node-sass-importer solves this:
+```js
+var sassImporter = require('node-sass-importer');
+sass.render({
+    importer: sassImporter(mySyncImporter)
+});
+```
+:+1: process exits with error message
+
 ## Async process hanging
 
 If you are using `sass.renderSync()`, you won't have any problems with exception handling.
