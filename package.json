@@ -4,7 +4,7 @@
   "description": "Creates an importer function for node-sass with no-hassle exception handling",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "jasmine"
   },
   "keywords": [
     "node-sass",
